@@ -1,6 +1,7 @@
 package oop.parking;
 
 import oop.parking.errors.NoParkingAvailableError;
+import oop.parking.events.CarInEvent;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -29,5 +30,16 @@ public class ParkingAssistantTest {
         ParkingAssistant parkingAssistant = new ParkingAssistant(new ArrayList<>());
         String carId = "carId";
         parkingAssistant.parkIn(carId);
+    }
+
+    @Test
+    public void itShouldRemoveTheParkingLotWhenParkingLotExceedMaxCapacity() {
+        ParkingLot parkingLot = mock(ParkingLot.class);
+        ParkingAssistant parkingAssistant = new ParkingAssistant(new ArrayList<>(Arrays.asList(parkingLot)));
+        when(parkingLot.calculateCurrentCapacityUsage()).thenReturn(0.8);
+
+        parkingAssistant.update(new CarInEvent(parkingLot));
+
+        assertFalse(parkingAssistant.getParkingLotsWithSpaceAvailable().contains(parkingLot));
     }
 }

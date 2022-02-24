@@ -2,13 +2,13 @@ package oop.parking;
 
 import oop.parking.errors.NoParkingAvailableError;
 import oop.parking.events.Event;
-import oop.parking.events.MaxLimitCapacityReachEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingAssistant implements Observer {
 
+    public static final double MAX_PARKING_CAPACITY = 0.8;
     private final ArrayList<ParkingLot> parkingLotsWithSpaceAvailable;
 
     public ParkingAssistant(ArrayList<ParkingLot> parkingLots) {
@@ -17,9 +17,9 @@ public class ParkingAssistant implements Observer {
 
     @Override
     public void update(Event event) {
-        if (event.getClass() == MaxLimitCapacityReachEvent.class) {
-            ParkingLot parkingLotToRemove = (ParkingLot) event.getSubject();
-            parkingLotsWithSpaceAvailable.remove(parkingLotToRemove);
+        ParkingLot parkingLot = (ParkingLot) event.getSubject();
+        if (parkingLot.calculateCurrentCapacityUsage() >= MAX_PARKING_CAPACITY) {
+            parkingLotsWithSpaceAvailable.remove(parkingLot);
         }
     }
 
