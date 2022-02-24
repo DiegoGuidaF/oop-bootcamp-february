@@ -1,17 +1,16 @@
 package oop.parking;
 
 import oop.parking.events.CarInEvent;
-import oop.parking.events.CapacityEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingLot {
+public class ParkingLot extends Notifier {
     private final double capacity;
     private final List<String> carIds;
-    private final List<Observer> observers = new ArrayList<>();
 
     public ParkingLot(int capacity) {
+        super();
         this.capacity = capacity;
         this.carIds = new ArrayList<>(capacity);
     }
@@ -21,23 +20,11 @@ public class ParkingLot {
         notifyObservers(new CarInEvent(this));
     }
 
-    public void registerObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    public List<Observer> getObservers() {
-        return observers;
-    }
-
     public List<String> getCarIds() {
         return carIds;
     }
 
-    private void notifyObservers(CapacityEvent event) {
-        observers.forEach(observer -> observer.update(event));
-    }
-
     public double calculateCurrentCapacityUsage() {
-        return carIds.size()/capacity;
+        return carIds.size() / capacity;
     }
 }
