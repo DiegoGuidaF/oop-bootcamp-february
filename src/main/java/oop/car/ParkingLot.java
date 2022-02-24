@@ -10,7 +10,6 @@ public class ParkingLot {
     private final int notifyCapacityThreshold;
     private final List<Integer> parkedCars;
     private final int numberOfSpaces;
-
     private final ParkingListener parkingListener;
     private final String parkingName;
 
@@ -30,5 +29,9 @@ public class ParkingLot {
         parkedCars.add(carId);
         parkingListener.checkParkingOccupancy(parkedCars.size(), numberOfSpaces, parkingName);
         return true;
+    }
+
+    public int getFreeSpots() {
+        return numberOfSpaces - parkedCars.size();
     }
 }

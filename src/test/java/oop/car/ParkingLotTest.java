@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
@@ -37,6 +38,13 @@ public class ParkingLotTest {
         parkingLot = new ParkingLot(10, parkingListener, "PARKING_1");
         parkingLot.parkCar(1);
         verify(parkingListener).checkParkingOccupancy(1, 10, "PARKING_1");
+    }
+
+    @Test
+    public void itShouldGetFreeSpots() {
+        parkingLot = new ParkingLot(10, parkingListener, "PARKING_1");
+        parkingLot.parkCar(1);
+        assertEquals(parkingLot.getFreeSpots(),9);
     }
 
     private void parkMultipleCars(int numberOfCars) {

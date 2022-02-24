@@ -5,8 +5,10 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
+import static oop.car.CarType.LARGE;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
@@ -45,5 +47,18 @@ public class ParkingAssistantTest {
         when(parkingLot2.parkCar(anyInt())).thenReturn(true);
         parkingAssistant.addParkingLot(parkingLot2);
         assertTrue(parkingAssistant.parkCar(5));
+    }
+
+    @Test
+    public void itShouldParkLargeCarsOnLeastOccupiedParkingLot() {
+        when(parkingLot.getFreeSpots()).thenReturn(3);
+
+        ParkingLot parkingLot2 = mock(ParkingLot.class);
+        when(parkingLot2.getFreeSpots()).thenReturn(5);
+        when(parkingLot2.parkCar(anyInt())).thenReturn(true);
+        parkingAssistant.addParkingLot(parkingLot2);
+
+        assertTrue(parkingAssistant.parkCar(5, LARGE));
+        verify(parkingLot2).parkCar(5);
     }
 }
