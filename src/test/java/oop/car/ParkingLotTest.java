@@ -36,7 +36,7 @@ public class ParkingLotTest {
     public void itShouldNotifyWhenOccupancyChanges() {
         parkingLot = new ParkingLot(10, parkingListener, "PARKING_1");
         parkingLot.parkCar(1);
-        verify(parkingListener).checkParkingOccupancy(1, 10);
+        verify(parkingListener).checkParkingOccupancy(1, 10, "PARKING_1");
     }
 
     private void parkMultipleCars(int numberOfCars) {

@@ -2,12 +2,13 @@ package oop.car;
 
 public class NotificationManager implements ParkingListener {
 
-    public String printNotification(String parkingName) {
-        return String.format("Parking %s full capacity", parkingName);
+    @Override
+    public void checkParkingOccupancy(int currentCapacity, int totalNumberOfSpaces,
+        String parkingName) {
+        printNotification(parkingName);
     }
 
-    @Override
-    public void checkParkingOccupancy(int currentCapacity, int totalNumberOfSpaces) {
-
+    private void printNotification(String parkingName) {
+        System.out.printf("Parking %s is lower than 20 percent", parkingName);
     }
 }

@@ -28,7 +28,7 @@ public class ParkingLot {
             return false;
         }
         parkedCars.add(carId);
-        parkingListener.checkParkingOccupancy(parkedCars.size(), numberOfSpaces);
+        parkingListener.checkParkingOccupancy(parkedCars.size(), numberOfSpaces, parkingName);
         return true;
     }
 }
