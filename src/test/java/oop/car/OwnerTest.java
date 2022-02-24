@@ -9,15 +9,9 @@ public class OwnerTest {
     Owner owner = new Owner();
 
     @Test
-    public void itShouldPrintTopCapacityNotification() {
-        assertEquals(owner.notifyMaxCapacity("PARKING_1"),
+    public void itShouldPrintNotification() {
+        assertEquals(owner.printNotification("PARKING_1"),
             "Parking PARKING_1 full capacity");
-    }
-
-    @Test
-    public void itShouldPrintALowCapacityNotification() {
-        assertEquals(owner.notifyMinCapacity("PARKING_1"),
-                "Parking PARKING_1 almost empty");
     }
 
 }
