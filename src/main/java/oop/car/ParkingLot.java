@@ -7,7 +7,6 @@ public class ParkingLot {
     public static final double MAX_CAPACITY_RATIO = 0.8;
     public static final double NOTIFY_CAPACITY_RATIO = 0.75;
     private final int maxCapacity;
-    private final int notifyCapacityThreshold;
     private final List<Integer> parkedCars;
     private final int numberOfSpaces;
     private final ParkingListener parkingListener;
@@ -19,7 +18,6 @@ public class ParkingLot {
         this.parkingName = parkingName;
         this.parkedCars = new ArrayList<>(numberOfSpaces);
         this.maxCapacity = (int) (MAX_CAPACITY_RATIO * numberOfSpaces);
-        this.notifyCapacityThreshold = (int) (NOTIFY_CAPACITY_RATIO * numberOfSpaces);
     }
 
     public boolean parkCar(int carId) {

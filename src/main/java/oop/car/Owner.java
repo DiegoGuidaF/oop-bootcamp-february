@@ -1,6 +1,6 @@
 package oop.car;
 
-public class NotificationManager implements ParkingListener {
+public class Owner implements ParkingListener {
 
     public static final double HIGH_CAPACITY_RATIO = 0.75;
     public static final double LOW_CAPACITY_RATIO = 0.20;
