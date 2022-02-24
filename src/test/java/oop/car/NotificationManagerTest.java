@@ -1,28 +1,30 @@
 package oop.car;
 
-import static org.testng.Assert.assertEquals;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 public class NotificationManagerTest {
 
-    NotificationManager notificationManager = new NotificationManager();
-    public static final String PARKING_LOT= "PARKING_1";
+    public static final String PARKING_LOT = "PARKING_1";
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    NotificationManager notificationManager = new NotificationManager();
 
-    @BeforeTest
+    @BeforeMethod
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
         System.setOut(standardOut);
+        outputStreamCaptor.reset();
     }
 
     @Test
@@ -35,10 +37,16 @@ public class NotificationManagerTest {
 
     @Test
     public void itShouldPrintOccupancyNotificationWhenCarParkingIsHigherThanThreshold() {
-        int highOccupancyThreshold = 80;
+        int highOccupancyThreshold = 75;
         String highOccupancyMessage = String.format("Parking %s is higher than %d percent", PARKING_LOT, highOccupancyThreshold);
         notificationManager.checkParkingOccupancy(10, 10, PARKING_LOT);
         assertEquals(highOccupancyMessage, outputStreamCaptor.toString());
+    }
+
+    @Test
+    public void itShouldNotPrintOccupancyNotificationWhenCarParkingIsAtMediumOccupancy() {
+        notificationManager.checkParkingOccupancy(5, 10, PARKING_LOT);
+        assertEquals("", outputStreamCaptor.toString());
     }
 
 }
