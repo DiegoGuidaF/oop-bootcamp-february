@@ -1,7 +1,10 @@
 package oop.parking;
 
+import oop.parking.events.MaxLimitCapacityReachEvent;
+import org.mockito.ArgumentCaptor;
 import org.testng.annotations.Test;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -34,12 +37,12 @@ public class ParkingLotTest {
         ParkingLot parkingLot  = new ParkingLot(5);
         Observer observer = mock(Observer.class);
         parkingLot.registerObserver(observer);
-        String event = "MaxLimitCapacityReach";
+        ArgumentCaptor<MaxLimitCapacityReachEvent> argument = ArgumentCaptor.forClass(MaxLimitCapacityReachEvent.class);
 
         String carId = "carId";
         parkingLot.carIn(carId);
 
-        verify(observer, never()).update(event);
+        verify(observer, never()).update(argument.capture());
     }
 
     @Test
@@ -47,12 +50,12 @@ public class ParkingLotTest {
         ParkingLot parkingLot  = new ParkingLot(5);
         Observer observer = mock(Observer.class);
         parkingLot.registerObserver(observer);
-        String event = "MaxLimitCapacityReach";
+        ArgumentCaptor<MaxLimitCapacityReachEvent> argument = ArgumentCaptor.forClass(MaxLimitCapacityReachEvent.class);
 
         for (int i = 0; i < 4; i++) {
             parkingLot.carIn("carId" + i);
         }
 
-        verify(observer).update(event);
+        verify(observer).update(argument.capture());
     }
 }

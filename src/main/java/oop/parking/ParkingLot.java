@@ -1,5 +1,7 @@
 package oop.parking;
 
+import oop.parking.events.MaxLimitCapacityReachEvent;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -17,7 +19,7 @@ public class ParkingLot {
 
     public void carIn(String carId) {
         carIds.add(carId);
-        if(exceedMaxCapacity()) notifyObservers("MaxLimitCapacityReach");
+        if(exceedMaxCapacity()) notifyObservers(new MaxLimitCapacityReachEvent(this));
     }
 
     private boolean exceedMaxCapacity() {
@@ -36,7 +38,7 @@ public class ParkingLot {
         return carIds;
     }
 
-    private void notifyObservers(String event) {
+    private void notifyObservers(MaxLimitCapacityReachEvent event) {
         observers.forEach(observer -> observer.update(event));
     }
 }

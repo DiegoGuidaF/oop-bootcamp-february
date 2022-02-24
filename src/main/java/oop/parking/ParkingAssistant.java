@@ -1,6 +1,7 @@
 package oop.parking;
 
 import oop.parking.errors.NoParkingAvailableError;
+import oop.parking.events.MaxLimitCapacityReachEvent;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class ParkingAssistant implements Observer {
     }
 
     @Override
-    public void update(String event) {
+    public void update(MaxLimitCapacityReachEvent event) {
 
     }
 

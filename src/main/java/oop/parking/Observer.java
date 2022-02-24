@@ -1,5 +1,7 @@
 package oop.parking;
 
+import oop.parking.events.MaxLimitCapacityReachEvent;
+
 public interface Observer {
-    void update(String event);
+    void update(MaxLimitCapacityReachEvent event);
 }
