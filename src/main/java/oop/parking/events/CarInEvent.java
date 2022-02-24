@@ -2,7 +2,7 @@ package oop.parking.events;
 
 import oop.parking.ParkingLot;
 
-public class CarInEvent implements Event {
+public class CarInEvent implements CapacityEvent {
     private final ParkingLot parkingLot;
 
     public CarInEvent(ParkingLot parkingLot) {
@@ -10,7 +10,12 @@ public class CarInEvent implements Event {
     }
 
     @Override
-    public Object getSubject() {
+    public Object getParkingLot() {
         return parkingLot;
+    }
+
+    @Override
+    public double getNewCapacity() {
+        return parkingLot.calculateCurrentCapacityUsage();
     }
 }

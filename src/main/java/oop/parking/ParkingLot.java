@@ -1,7 +1,7 @@
 package oop.parking;
 
 import oop.parking.events.CarInEvent;
-import oop.parking.events.Event;
+import oop.parking.events.CapacityEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class ParkingLot {
         return carIds;
     }
 
-    private void notifyObservers(Event event) {
+    private void notifyObservers(CapacityEvent event) {
         observers.forEach(observer -> observer.update(event));
     }
 

@@ -1,7 +1,7 @@
 package oop.parking;
 
 import oop.parking.errors.NoParkingAvailableError;
-import oop.parking.events.Event;
+import oop.parking.events.CapacityEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +16,9 @@ public class ParkingAssistant implements Observer {
     }
 
     @Override
-    public void update(Event event) {
-        ParkingLot parkingLot = (ParkingLot) event.getSubject();
-        if (parkingLot.calculateCurrentCapacityUsage() >= MAX_PARKING_CAPACITY) {
-            parkingLotsWithSpaceAvailable.remove(parkingLot);
+    public void update(CapacityEvent event) {
+        if (event.getNewCapacity() >= MAX_PARKING_CAPACITY) {
+            parkingLotsWithSpaceAvailable.remove(event.getParkingLot());
         }
     }
 

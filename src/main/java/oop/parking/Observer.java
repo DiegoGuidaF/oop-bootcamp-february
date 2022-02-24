@@ -1,7 +1,7 @@
 package oop.parking;
 
-import oop.parking.events.Event;
+import oop.parking.events.CapacityEvent;
 
 public interface Observer {
-    void update(Event event);
+    void update(CapacityEvent event);
 }

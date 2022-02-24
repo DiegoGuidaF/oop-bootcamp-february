@@ -40,7 +40,7 @@ public class ParkingLotTest {
         parkingLot.carIn(carId);
 
         verify(observer).update(argument.capture());
-        assertEquals(argument.getValue().getSubject(), parkingLot);
+        assertEquals(argument.getValue().getParkingLot(), parkingLot);
     }
 
     @Test
