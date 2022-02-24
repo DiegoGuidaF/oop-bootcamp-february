@@ -33,10 +33,10 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void itShouldNotifyOwnerWhenOccupancyChanges() {
+    public void itShouldNotifyWhenOccupancyChanges() {
         parkingLot = new ParkingLot(10, parkingListener, "PARKING_1");
         parkingLot.parkCar(1);
-        verify(parkingListener).checkParkingOccupancy(10, 20);
+        verify(parkingListener).checkParkingOccupancy(1, 10);
     }
 
     private void parkMultipleCars(int numberOfCars) {
