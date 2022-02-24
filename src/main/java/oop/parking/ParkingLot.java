@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ParkingLot {
     private static double MAX_PERCENTAGE_CAPACITY = 0.8;
-    private final int capacity;
+    private final double capacity;
     private List<String> carIds;
     private List<Observer> observers = new ArrayList<>();
 
@@ -21,7 +21,7 @@ public class ParkingLot {
     }
 
     private boolean exceedMaxCapacity() {
-        return (double) carIds.size()/capacity >= MAX_PERCENTAGE_CAPACITY;
+        return carIds.size()/capacity >= MAX_PERCENTAGE_CAPACITY;
     }
 
     public void registerObserver(Observer observer) {
