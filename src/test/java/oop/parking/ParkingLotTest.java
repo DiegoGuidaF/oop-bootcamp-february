@@ -1,7 +1,6 @@
 package oop.parking;
 
 import oop.parking.events.CarInEvent;
-import oop.parking.events.MaxLimitCapacityReachEvent;
 import org.mockito.ArgumentCaptor;
 import org.testng.annotations.Test;
 
