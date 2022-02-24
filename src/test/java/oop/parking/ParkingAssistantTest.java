@@ -42,4 +42,15 @@ public class ParkingAssistantTest {
 
         assertFalse(parkingAssistant.getParkingLotsWithSpaceAvailable().contains(parkingLot));
     }
+
+    @Test
+    public void itShouldNotRemoveTheParkingLotWhenParkingLotDoNotExceedMaxCapacity() {
+        ParkingLot parkingLot = mock(ParkingLot.class);
+        ParkingAssistant parkingAssistant = new ParkingAssistant(new ArrayList<>(Arrays.asList(parkingLot)));
+        when(parkingLot.calculateCurrentCapacityUsage()).thenReturn(0.2);
+
+        parkingAssistant.update(new CarInEvent(parkingLot));
+
+        assertTrue(parkingAssistant.getParkingLotsWithSpaceAvailable().contains(parkingLot));
+    }
 }
