@@ -13,6 +13,6 @@ public class MaxLimitCapacityReachEventTest {
         ParkingLot parkingLot = mock(ParkingLot.class);
         MaxLimitCapacityReachEvent event = new MaxLimitCapacityReachEvent(parkingLot);
 
-        assertEquals(event.getParkingLot(), parkingLot);
+        assertEquals(event.getSubject(), parkingLot);
     }
 }

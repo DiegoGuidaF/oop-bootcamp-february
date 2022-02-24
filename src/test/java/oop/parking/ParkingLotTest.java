@@ -8,8 +8,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class ParkingLotTest {
     @Test
@@ -57,5 +56,6 @@ public class ParkingLotTest {
         }
 
         verify(observer).update(argument.capture());
+        assertEquals(argument.getValue().getSubject(), parkingLot);
     }
 }
