@@ -1,16 +1,15 @@
 package oop.parking;
 
-import oop.parking.events.MaxLimitCapacityReachEvent;
+import oop.parking.events.CarInEvent;
+import oop.parking.events.Event;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class ParkingLot {
-    private static double MAX_PERCENTAGE_CAPACITY = 0.8;
     private final double capacity;
-    private List<String> carIds;
-    private List<Observer> observers = new ArrayList<>();
+    private final List<String> carIds;
+    private final List<Observer> observers = new ArrayList<>();
 
     public ParkingLot(int capacity) {
         this.capacity = capacity;
@@ -19,11 +18,7 @@ public class ParkingLot {
 
     public void carIn(String carId) {
         carIds.add(carId);
-        if(exceedMaxCapacity()) notifyObservers(new MaxLimitCapacityReachEvent(this));
-    }
-
-    private boolean exceedMaxCapacity() {
-        return carIds.size()/capacity >= MAX_PERCENTAGE_CAPACITY;
+        notifyObservers(new CarInEvent(this));
     }
 
     public void registerObserver(Observer observer) {
@@ -38,7 +33,7 @@ public class ParkingLot {
         return carIds;
     }
 
-    private void notifyObservers(MaxLimitCapacityReachEvent event) {
+    private void notifyObservers(Event event) {
         observers.forEach(observer -> observer.update(event));
     }
 
