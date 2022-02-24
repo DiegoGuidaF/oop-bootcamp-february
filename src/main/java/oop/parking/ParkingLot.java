@@ -41,4 +41,8 @@ public class ParkingLot {
     private void notifyObservers(MaxLimitCapacityReachEvent event) {
         observers.forEach(observer -> observer.update(event));
     }
+
+    public double calculateCurrentCapacityUsage() {
+        return carIds.size()/capacity;
+    }
 }

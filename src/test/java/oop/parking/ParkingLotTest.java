@@ -56,4 +56,20 @@ public class ParkingLotTest {
         verify(observer).update(argument.capture());
         assertEquals(argument.getValue().getSubject(), parkingLot);
     }
+
+    @Test
+    public void itShouldReturnZeroWhenCalculatingTheCurrentCapacityUsageOfAnEmptyParkingLot() {
+        ParkingLot parkingLot  = new ParkingLot(5);
+
+        assertEquals(parkingLot.calculateCurrentCapacityUsage(), 0.0);
+    }
+
+    @Test
+    public void itShouldReturnTheCurrentCapacityUsageOfAParkingLot() {
+        ParkingLot parkingLot  = new ParkingLot(5);
+
+        parkingLot.carIn("carId");
+
+        assertEquals(parkingLot.calculateCurrentCapacityUsage(), 0.2);
+    }
 }
