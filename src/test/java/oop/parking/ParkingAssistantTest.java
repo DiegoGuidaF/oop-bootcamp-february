@@ -15,7 +15,7 @@ public class ParkingAssistantTest {
     public void itShouldParkACarInTheFirstParkingLotAvailable() throws NoParkingAvailableError {
         ParkingLot parkingLot1 = mock(ParkingLot.class);
         ParkingLot parkingLot2 = mock(ParkingLot.class);
-        ParkingAssistant parkingAssistant = new ParkingAssistant(Arrays.asList(parkingLot1,parkingLot2));
+        ParkingAssistant parkingAssistant = new ParkingAssistant(new ArrayList<>(Arrays.asList(parkingLot1,parkingLot2)));
         String carId = "carId";
 
         parkingAssistant.parkIn(carId);

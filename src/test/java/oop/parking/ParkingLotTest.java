@@ -4,11 +4,9 @@ import oop.parking.events.MaxLimitCapacityReachEvent;
 import org.mockito.ArgumentCaptor;
 import org.testng.annotations.Test;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.testng.Assert.*;
+import static org.mockito.Mockito.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class ParkingLotTest {
     @Test
