@@ -14,4 +14,16 @@ public class OwnerTest {
             "Parking PARKING_1 full capacity");
     }
 
+    @Test
+    public void itShouldPrintLowOccupancyNotificationWhenCarParkingIsAlmostEmpty() {
+        assertEquals(owner.checkCapacity(1,10),
+            "Parking PARKING_1 is EMPTY");
+    }
+
+    @Test
+    public void itShouldPrintHighOccupancyNotificationWhenCarParkingIsAlmostFull() {
+        assertEquals(owner.checkCapacity(9,10),
+            "Parking PARKING_1 is FULL");
+    }
+
 }

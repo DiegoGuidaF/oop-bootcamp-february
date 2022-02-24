@@ -2,7 +2,6 @@ package oop.car;
 
 import org.testng.annotations.Test;
 
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.testng.Assert.assertFalse;
@@ -34,10 +33,10 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void itShouldNotifyOwnerWhenAlmostFull() {
+    public void itShouldNotifyOwnerWhenOccupancyChanges() {
         parkingLot = new ParkingLot(10, parkingListener, "PARKING_1");
-        parkMultipleCars(8);
-        verify(parkingListener).printNotification(eq("PARKING_1"));
+        parkingLot.parkCar(1);
+        verify(parkingListener).checkParkingOccupancy(10, 20);
     }
 
     private void parkMultipleCars(int numberOfCars) {
@@ -45,6 +44,4 @@ public class ParkingLotTest {
             assertTrue(parkingLot.parkCar(i));
         }
     }
-
-
 }
