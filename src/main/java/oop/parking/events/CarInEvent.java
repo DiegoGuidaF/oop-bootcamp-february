@@ -10,7 +10,7 @@ public class CarInEvent implements CapacityEvent {
     }
 
     @Override
-    public Object getParkingLot() {
+    public ParkingLot getParkingLot() {
         return parkingLot;
     }
 

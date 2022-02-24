@@ -1,6 +1,8 @@
 package oop.parking.events;
 
+import oop.parking.ParkingLot;
+
 public interface CapacityEvent extends Event {
-    Object getParkingLot();
+    ParkingLot getParkingLot();
     double getNewCapacity();
 }
