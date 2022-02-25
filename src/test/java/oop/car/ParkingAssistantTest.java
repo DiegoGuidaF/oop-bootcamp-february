@@ -20,7 +20,7 @@ public class ParkingAssistantTest {
     @BeforeMethod
     public void setUp() {
         parkingLot = mock(ParkingLot.class);
-        var parkingLotList = new ArrayList<ParkingLot>();
+        ArrayList<ParkingLot> parkingLotList = new ArrayList<ParkingLot>();
         parkingLotList.add(parkingLot);
         parkingAssistant = new ParkingAssistant(parkingLotList);
     }
