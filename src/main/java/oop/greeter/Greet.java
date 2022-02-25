@@ -17,11 +17,29 @@ public class Greet {
     }
 
     public String greet(String name) {
-        String capitalizedName = name.substring(0, 1).toUpperCase() + name.substring(1);
-        LocalTime localTime = LocalTime.now(clock);
-        if (localTime.isAfter(LocalTime.of(6, 0)) && localTime.isBefore(LocalTime.of(12, 0))) {
-            return String.format("Good morning %s", capitalizedName.trim());
+        String capitalizedName = (name.substring(0, 1).toUpperCase() + name.substring(1)).trim();
+        if (isTimeBetween(6, 12)) {
+            return String.format("Good morning %s", capitalizedName);
+        } else if (isTimeBetween(18, 22)) {
+            return String.format("Good evening %s", capitalizedName);
+        } else if (isTimeBetween(22, 23, true) ||
+            isTimeBetween(0, 6)) {
+            return String.format("Good night %s", capitalizedName);
         }
-        return String.format("Hello %s", capitalizedName.trim());
+        return String.format("Hello %s", capitalizedName);
+    }
+
+    private boolean isTimeBetween(int beforeHour, int afterHour) {
+        return isTimeBetween(beforeHour, afterHour, false);
+    }
+
+    private boolean isTimeBetween(int beforeHour, int afterHour, boolean isEndOfDay) {
+        LocalTime localTime = LocalTime.now(clock);
+        int minutes = 0;
+        if (isEndOfDay) {
+            minutes = LocalTime.MAX.getMinute();
+        }
+        return localTime.isAfter(LocalTime.of(beforeHour, 0)) &&
+            localTime.isBefore(LocalTime.of(afterHour, minutes));
     }
 }
