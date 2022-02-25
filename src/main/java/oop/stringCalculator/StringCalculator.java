@@ -6,6 +6,12 @@ public class StringCalculator {
         if (inputString.isEmpty()){
             return  0;
         }
-        return Integer.parseInt(inputString);
+        int positionOfComma = inputString.indexOf(",");
+        if(positionOfComma == -1){
+            return Integer.parseInt(inputString);
+        }
+        int firstNumber = Integer.parseInt(inputString.substring(0, positionOfComma));
+        int secondNumber = Integer.parseInt(inputString.substring(positionOfComma+1));
+        return firstNumber + secondNumber;
     }
 }

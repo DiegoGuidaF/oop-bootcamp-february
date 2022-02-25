@@ -13,9 +13,8 @@ public class StringCalculatorTest {
  public void itShouldReturnNumberWhenInputIsSingleDigit() {
      assertEquals(StringCalculator.calculateFrom("9"), 9);
  }
-
-// @Test
-// public void itShouldReturnTheSumOfTwoNumbersWhenCommaSeparated() {
-//     assertEquals(StringCalculator.calculateFrom("10,20"), 30);
-// }
+ @Test
+ public void itShouldReturnTheSumOfTwoNumbersWhenCommaSeparated() {
+     assertEquals(StringCalculator.calculateFrom("10,20"), 30);
+ }
 }
