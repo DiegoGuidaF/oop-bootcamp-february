@@ -7,22 +7,28 @@ import org.testng.annotations.Test;
 
 public class StringCalculatorTest {
 
-  private StringCalculator stringCalculator;
+    private StringCalculator stringCalculator;
 
-  @BeforeMethod
-  public void setUp() {
-    stringCalculator = new StringCalculator();
-  }
+    @BeforeMethod
+    public void setUp() {
+        stringCalculator = new StringCalculator();
+    }
 
-  @Test
-  public void itShouldReturnZeroWhenInputAnEmptyString() {
-    String emptyString = "";
-    assertEquals(stringCalculator.calculate(emptyString), 0);
-  }
+    @Test
+    public void itShouldReturnZeroWhenInputAnEmptyString() {
+        String emptyString = "";
+        assertEquals(stringCalculator.calculate(emptyString), 0);
+    }
 
-  @Test
-  public void itShouldReturnTheSameValueThatItGivesAsString() {
-    String stringValue = "4";
-    assertEquals(stringCalculator.calculate(stringValue), 4);
-  }
+    @Test
+    public void itShouldReturnTheSameValueThatItGivesAsString() {
+        String stringValue = "4";
+        assertEquals(stringCalculator.calculate(stringValue), 4);
+    }
+
+    @Test
+    public void itShouldReturnTheSumOfTwoNumbersThatAreCommaSeparated() {
+        String commaSeparatedNumbers = "2,4";
+        assertEquals(stringCalculator.calculate(commaSeparatedNumbers), 6);
+    }
 }
