@@ -31,4 +31,16 @@ public class StringCalculatorTest {
         String commaSeparatedNumbers = "2,4";
         assertEquals(stringCalculator.calculate(commaSeparatedNumbers), 6);
     }
+
+    @Test
+    public void itShouldReturnTheSumOfTwoNumbersThatAreNewLineSeparated() {
+        String newLineSeparatedNumbers = "2\n4";
+        assertEquals(stringCalculator.calculate(newLineSeparatedNumbers), 6);
+    }
+
+    @Test
+    public void itShouldReturnTheSumOfNumbersThatAreNewLineOrComaSeparated() {
+        String newLineSeparatedNumbers = "2\n4,4";
+        assertEquals(stringCalculator.calculate(newLineSeparatedNumbers), 10);
+    }
 }
