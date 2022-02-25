@@ -14,4 +14,14 @@ public class NatoParserTest {
     public void itShouldReturnEchoWhenEncodingE() {
         assertEquals(NatoParser.encode("e"), "echo");
     }
+
+    @Test
+    public void itShouldEncodeWordToNato() {
+        assertEquals(NatoParser.encode("hello"), "hotel-echo-lima-lima-oscar");
+    }
+
+    @Test
+    public void itShouldDecodeNatoToWord() {
+        assertEquals(NatoParser.decode("hotel-echo"), "he");
+    }
 }
