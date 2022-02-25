@@ -16,6 +16,7 @@ public class GreetTest {
 
     String morningInstant = "2022-02-25T10:15:30Z";
     String afternoonInstant = "2022-02-25T15:15:30Z";
+    String eveningInstant = "2022-02-25T19:15:30Z";
     Clock clock = Clock.fixed(Instant.parse(morningInstant), ZoneId.of("UTC"));
     Greet greet = new Greet(clock);
 
@@ -43,7 +44,8 @@ public class GreetTest {
 
     @Test
     public void itShouldGreetGoodEveningDuringEveningTime() {
-
-
+        Clock clock = Clock.fixed(Instant.parse(eveningInstant), ZoneId.of("UTC"));
+        Greet greet = new Greet(clock);
+        assertEquals(greet.greet("Chuck Norris"), "Good evening Chuck Norris");
     }
 }

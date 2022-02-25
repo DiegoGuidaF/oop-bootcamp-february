@@ -21,6 +21,8 @@ public class Greet {
         LocalTime localTime = LocalTime.now(clock);
         if (localTime.isAfter(LocalTime.of(6, 0)) && localTime.isBefore(LocalTime.of(12, 0))) {
             return String.format("Good morning %s", capitalizedName.trim());
+        } else if(localTime.isAfter(LocalTime.of(18, 0)) && localTime.isBefore(LocalTime.of(22, 0))){
+            return String.format("Good evening %s", capitalizedName.trim());
         }
         return String.format("Hello %s", capitalizedName.trim());
     }
