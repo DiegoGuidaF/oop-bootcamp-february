@@ -32,7 +32,7 @@ public class GreetTest {
 
   @Test
   public void itShouldCapitalizeFirstLetterOfName() {
-    assertEquals(greet.greet("chuck Norris "), "Good morning Chuck Norris");
+    assertEquals(greet.greet("chuck Norris"), "Good morning Chuck Norris");
   }
 
   @Test
